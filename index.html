@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>ホーム || サポコ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+   charset="UTF-8">
+  <link rel="stylesheet" href="app.min.css">
+  <style>
+  /* TODO */
+    .app-topbar{
+        background-color: #4A507E;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-page" data-page="home">
+    <div class="app-topbar">
+      <div class="app-title">サポコ</div>
+    </div>
+    <div class="app-content">
+      <p class="app-section">
+        ～コミュニケーション補助アプリ　サポコ～<br>
+        <br>
+        【機能】<br>
+        文字→音声：入力された文字が音声になります。<br>
+        音声→文字：話した音声が文字になります。<br>
+        自由帳：自由に書き込むことができるメモ帳です。<br>
+        <br>
+        詳しい使い方は、「サポコ使い方」をクリックして下さい。<br>
+        ※文字→音声、音声→文字　は、Andoroid(ブラウザ：Google Chrome)でしかお使いいただけません。<br>
+      </p>
+
+      <div class="app-section">
+        <div class="app-button">
+          <a href="synthesis.html">文字→音声</a>
+        </div>
+        <div class="app-button">
+          <a href="recognition.html">音声→文字</a>
+        </div>
+        <div class="app-button">
+          <a href="draw.html">自由帳</a>
+        </div>
+        <div class="app-button">
+          <a href="use.html">サポコ使い方</a>
+        </div>
+        <div class="app-button">
+          <a href="contact.html">意見箱</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="zepto.js"></script>
+  <script src="app.min.js"></script>
+  <script>
+    App.controller('home', function (page) {
+      // put stuff here
+    });
+    App.controller('page2', function (page) {
+      // put stuff here
+    });
+    try {
+      App.restore();
+    } catch (err) {
+      App.load('home');
+    }
+  </script>
+
+</body>
+
+</html>
