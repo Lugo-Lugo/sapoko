@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>文字→音声 || サポコ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+   charset="UTF-8">
+  <link rel="stylesheet" href="app.min.css">
+  <style>
+    /* TODO */
+    .app-topbar{
+        background-color: #4A507E;
+      }
+  </style>
+</head>
+
+<body>
+  <div class="app-page" data-page="home">
+    <div class="app-topbar">
+      <div class="left app-button" data-back data-autotitle>
+        <input type="button" onclick="location.href='index.html'" value="">
+      </div>
+      <div class="app-title">文字→音声</div>
+    </div>
+    <div class="app-content">
+      <div class="app-section">
+        <textarea id="text" cols="30" rows="10">文章を入力してください。</textarea>
+        <br>
+        <button id="start-btn">再生する</button>
+        <button id="stop-btn">停止する</button>
+        <button id="pause-btn">一時停止する</button>
+        <button id="resume-btn">再開する</button>
+      </div>
+           
+      <div class="app-section">
+        <div class="app-button">
+          <a href="synthesis.html">文字→音声</a>
+        </div>
+        <div class="app-button">
+          <a href="recognition.html">音声→文字</a>
+        </div>
+        <div class="app-button">
+          <a href="draw.html">自由帳</a>
+        </div>
+        <div class="app-button">
+          <a href="use.html">サポコ使い方</a>
+        </div>
+        <div class="app-button">
+          <a href="contact.html">意見箱</a>
+        </div>
+      </div>
+    </div>
+  </div>
+           
+  <script src="zepto.js"></script>
+  <script src="app.min.js"></script>
+  <script>
+    App.controller('home', function (page) {
+      // put stuff here
+    });
+
+    App.controller('page2', function (page) {
+      // put stuff here
+    });
+
+    try {
+      App.restore();
+    } catch (err) {
+      App.load('home');
+    }
+  </script>
+            
+  <script>
+    
+    if('speechSynthesis' in window){
+        alert("お使いのブラウザでは、文字を音声に変換することができます。音量にお気を付けください。")
+    }else{
+        alert("お使いのブラウザでは、文字を音声に変換することができません。")
+    }
+
+    //HTMLから要素を取得
+    const text     = document.querySelector('#text');
+    const startBtn = document.querySelector('#start-btn');
+    const stopBtn = document.querySelector('#stop-btn');
+    const pauseBtn = document.querySelector('#pause-btn');
+    const resumeBtn = document.querySelector('#resume-btn');
+
+    //クリックされたら行う処理
+    startBtn.addEventListener('click',function(){
+    //文字を値として取得し、発言を作成
+        const utterance = new SpeechSynthesisUtterance(text.value)
+    //発言項目に発言を追加し、発言を再生
+        speechSynthesis.speak(utterance)
+    })
+    stopBtn.addEventListener('click',function(){
+    //発言項目をクリアして、発言を停止
+        speechSynthesis.cancel()
+    })
+    pauseBtn.addEventListener('click',function(){
+    //発言項目を保持して、発言を一時停止
+        speechSynthesis.pause()
+    })
+    resumeBtn.addEventListener('click',function(){
+    //一時停止を解除して、発言を再開
+        speechSynthesis.resume()
+    })
+  </script>
+
+</body>
+
+</html>
