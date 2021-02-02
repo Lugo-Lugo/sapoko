@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>音声→文字 || サポコ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+   charset="UTF-8">
+  <link rel="stylesheet" href="app.min.css">
+  <style>
+  /* TODO */
+    .app-topbar{
+        background-color: #4A507E;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-page" data-page="home">
+    <div class="app-topbar">
+      <div class="left app-button" data-back data-autotitle>
+        <input type="button" onclick="location.href='index.html'" value="">
+      </div>
+      <div class="app-title">音声→テキスト</div>
+    </div>
+    <div class="app-content">
+      <div class="app-section">
+        <button id="start-btn">開始する</button>
+        <button id="stop-btn">停止する</button>
+        <button id="reset-btn">初期化する</button>
+        <div id="result-div"></div>
+      </div>
+            
+      <div class="app-section">
+        <div class="app-button">
+          <a href="synthesis.html">文字→音声</a>
+        </div>
+        <div class="app-button">
+          <a href="recognition.html">音声→文字</a>
+        </div>
+        <div class="app-button">
+          <a href="draw.html">自由帳</a>
+        </div>
+        <div class="app-button">
+          <a href="use.html">サポコ使い方</a>
+        </div>
+        <div class="app-button">
+          <a href="contact.html">意見箱</a>
+        </div>
+      </div>
+    </div>
+  </div>
+        
+  <script src="zepto.js"></script>
+  <script src="app.min.js"></script>
+  <script>
+    App.controller('home', function (page) {
+     // put stuff here
+    });
+    App.controller('page2', function (page) {
+      // put stuff here
+    });
+    try {
+      App.restore();
+    } catch (err) {
+      App.load('home');
+    }
+  </script>
+
+  <script>
+
+    const startBtn = document.querySelector('#start-btn');
+    const stopBtn = document.querySelector('#stop-btn');
+    const resetBtn = document.querySelector('#reset-btn');
+    const resultDiv = document.querySelector('#result-div');
+
+    SpeechRecognition = webkitSpeechRecognition || SpeechRecognition;
+    if ('SpeechRecognition' in window) {
+      alert("お使いのブラウザは、音声を文字に変換することが可能です。");
+    } else {
+      alert("お使いのブラウザは、音声を文字に変換することができません。");
+    }
+    let recognition = new SpeechRecognition();
+
+    //言語を指定
+    recognition.lang = 'ja-JP';
+    //暫定的な結果を得る
+    recognition.interimResults = true;
+    //認識し続ける
+    recognition.continuous = true;
+    //確定した認識結果(黒)
+    let finalTranscript = '';
+    recognition.onresult = (event) => {
+    //暫定的な認識結果(灰色)
+    let interimTranscript = '';
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      let transcript = event.results[i][0].transcript;
+        if (event.results[i].isFinal){
+        //認識終了
+          finalTranscript += transcript + "<br>";
+        }else{
+        //認識継続
+          nterimTranscript = transcript;
+        }
+      }
+    resultDiv.innerHTML = finalTranscript + '<i style="color:#ddd;">' + interimTranscript + '</i>';
+    }
+
+    //開始ボタンが押された時の処理
+    startBtn.onclick = () => {
+      recognition.start();
+    }
+    //停止ボタンが押された時の処理
+    stopBtn.onclick = () => {
+      recognition.stop();
+    }
+    //初期化ボタンが押された時の処理
+    resetBtn.onclick = () => {
+      resultDiv.innerHTML = "";
+      finalTranscript = "";
+    }
+  </script>
+        
+</body>
+
+</html>
