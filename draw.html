@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+  
+<head>
+  <title>自由帳 || サポコ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+   charset="UTF-8">
+  <link rel="stylesheet" href="app.min.css">
+  <style>
+    /* TODO */
+    canvas {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+    }
+    #drawArea {
+      display: block;
+    }
+
+    .bar{
+      float: left;
+    }
+    .app-topbar{
+      background-color: #4A507E;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-page" data-page="home">
+  <div class="app-topbar">
+    <div class="left app-button" data-back data-autotitle>
+      <input type="button" onclick="location.href='index.html'" value="">
+    </div>
+    <div class="app-title">自由帳</div>
+  </div>
+  <div class="app-content">
+    <div class="app-section">
+      <div id="top-bar">
+       
+        <div class="bar">
+          <p class="text">線の色を選ぶ</p>
+          <input type="button" class="b1" style="background: #000000;" value=" " onclick="change_black()">
+          <input type="button" class="b1" style="background: #ffffff;" value=" " onclick="change_white()">
+          <input type="button" class="b1" style="background: #ff0000;" value=" " onclick="change_red()">
+          <input type="button" class="b1" style="background: #0000ff;" value=" " onclick="change_blue()">
+          <input type="button" class="b1" style="background: #ffff00;" value=" " onclick="change_yellow()">
+          <input type="button" class="b1" style="background: #008000;" value=" " onclick="change_green()">
+        </div>
+
+        <div class="bar">
+          <p class="text">線幅を選ぶ</p>
+          <input type="button" class="b2" value="細い線" onclick="change_8()">
+          <input type="button" class="b2" value="太い線" onclick="change_16()">
+        </div>
+
+        <div class="bar">
+            <p class="text">背景色を変更する</p>
+            <input type="button" class="b2" value="黒" onclick="spread1()">
+            <input type="button" class="b2" value="白" onclick="spread2()">
+        </div>
+
+        <div class="bar">
+          <p class="text">初期化する</p>
+          <input type="button" class="b2" value="消去" onclick="clr()">
+        </div>
+      </div>
+      <canvas id="drawArea"></canvas>
+    </div>
+    
+    <div class="app-section">
+        <div class="app-button">
+          <a href="synthesis.html">文字→音声</a>
+        </div>
+        <div class="app-button">
+          <a href="recognition.html">音声→文字</a>
+        </div>
+        <div class="app-button">
+          <a href="draw.html">自由帳</a>
+        </div>
+        <div class="app-button">
+          <a href="use.html">サポコ使い方</a>
+        </div>
+        <div class="app-button">
+          <a href="contact.html">意見箱</a>
+        </div>
+      </div>
+  </div>
+  </div>
+    
+  
+  <script src="zepto.js"></script>
+  <script src="app.min.js"></script>
+    
+  <script>
+    App.controller('home', function (page) {
+    // put stuff here
+    });
+    App.controller('page2', function (page) {
+    // put stuff here
+    });
+    try {
+      App.restore();
+    } catch (err) {
+      App.load('home');
+    }
+  </script>
+
+  <script src="draw.js"></script>
+        
+</body>
+
+</html>
