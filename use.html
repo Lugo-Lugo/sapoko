@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+  <title>サポコ使い方 || サポコ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"
+   charset="UTF-8">
+  <link rel="stylesheet" href="app.min.css">
+  <style>
+    /* TODO */
+    .app-topbar{
+        background-color: #4A507E;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="app-page" data-page="home">
+    <div class="app-topbar">
+      <div class="left app-button" data-back data-autotitle>
+        <input type="button" onclick="location.href='index.html'" value="">
+      </div>
+      <div class="app-title">サポコ使い方</div>
+    </div>
+    <div class="app-content">
+      <p class="app-section">
+      ～使い方～<br>
+      <br>
+      【文字→音声】Andoroid(ブラウザ：Google Chrome)でしかお使いいただけません。<br>
+      ・「文章を入力してください。」の欄に、音声化したい文章を入力します。<br>
+      ・再生する際は「再生する」を押す。すると、音声がながれます。<br>
+      ・停止する際は「停止する」を押す。すると、音声が停止されます。<br>
+      ・途中で音声を中断する場合は「一時停止する」を押す。すると、音声が一時停止します。<br>
+      ・一時停止した音声を再開したい場合は「再開する」を押す。すると、音声が再開されます。<br>
+      ※一度、「停止する」を押すと「再開する」を押しても再開されませんのでご注意ください。<br>
+      <br>
+      【音声→文字】Andoroid(ブラウザ：Google Chrome)でしかお使いいただけません。<br>
+      ・「開始する」を押すと音声認識が開始されます。<br>
+      ・マイクに向かって何か話してください。<br>
+      ・マイクに向かって話した内容が画面上に書き出されます。<br>
+      ・内容をリセットしたい場合は「初期化する」を押します。<br>
+      <br>
+      【自由帳】<br>
+      自由に何でも書き込めます。<br>
+      ・色のボックスを押すと、その色の線に変わります。<br>
+      ・「線幅を選ぶ」で、細い線8pxと16pxを選べます。<br>
+      ・「背景色を変更する」で、黒い背景と白い背景に変更できます。<br>
+      ・何も書いていない状態に戻したい場合は、「消去」を押してください。<br>
+      <br>
+      </p>
+
+      <div class="app-section">
+        <div class="app-button">
+          <a href="synthesis.html">文字→音声</a>
+        </div>
+        <div class="app-button">
+          <a href="recognition.html">音声→文字</a>
+        </div>
+        <div class="app-button">
+          <a href="draw.html">自由帳</a>
+        </div>
+        <div class="app-button">
+          <a href="use.html">サポコ使い方</a>
+        </div>
+        <div class="app-button">
+          <a href="contact.html">意見箱</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="zepto.js"></script>
+  <script src="app.min.js"></script>
+  <script>
+    App.controller('home', function (page) {
+      // put stuff here
+    });
+
+    App.controller('page2', function (page) {
+      // put stuff here
+    });
+
+    try {
+      App.restore();
+    } catch (err) {
+      App.load('home');
+    }
+  </script>
+  
+</body>
+
+</html>
