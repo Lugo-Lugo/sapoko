@@ -42,29 +42,38 @@
     </div>
   </div>
 
+  <!-- この辺で空ページを作っておく｡ -->
+  <div class="app-page" data-page="synthesis"></div>
+  <div class="app-page" data-page="recognition"></div>
+  <div class="app-page" data-page="draw"></div>
+  <div class="app-page" data-page="use"></div>
+  <div class="app-page" data-page="contact"></div>
+
   <script src="zepto.js"></script>
   <script src="app.min.js"></script>
   <script>
-    App.controller('synthesis', function (page) {
-      $location.path('./synthesis.html');
-    });
-    App.controller('recognition', function (page) {
-      $location.path('./recognition.html');
-    });
-    App.controller('draw', function (page) {
-      $location.path('./draw.html');
-    });
-    App.controller('use', function (page) {
-      $location.path('./use.html');
-    });
-    App.controller('contact', function (page) {
-      $location.path('./contact.html');
-    });
     try {
       App.restore();
     } catch (err) {
       App.load('home');
     }
+
+    /* この辺でクリックされた時にページを遷移するように処理を書いておく｡ */
+    App.controller('synthesis', function (page) {
+      window.location = './synthesis.html';
+    });
+    App.controller('recognition', function (page) {
+      window.location = './recognition.html';
+    });
+    App.controller('draw', function (page) {
+      window.location = './draw.html';
+    });
+    App.controller('use', function (page) {
+      window.location = './use.html';
+    });
+    App.controller('contact', function (page) {
+      window.location = './contact.html';
+    });
   </script>
 
 </body>
