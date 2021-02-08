@@ -69,41 +69,49 @@
     </div>
     
     <div class="app-section">
-        <div class="app-button">
-          <a href="synthesis.html">文字→音声</a>
-        </div>
-        <div class="app-button">
-          <a href="recognition.html">音声→文字</a>
-        </div>
-        <div class="app-button">
-          <a href="draw.html">自由帳</a>
-        </div>
-        <div class="app-button">
-          <a href="use.html">サポコ使い方</a>
-        </div>
-        <div class="app-button">
-          <a href="contact.html">意見箱</a>
-        </div>
+        <div class="app-button" data-target="synthesis">文字→音声</div>
+        <div class="app-button" data-target="recognition">音声→文字</div>
+        <div class="app-button" data-target="draw">自由帳</div>
+        <div class="app-button" data-target="use">サポコ使い方</div>
+        <div class="app-button" data-target="contact">意見箱</div>
       </div>
   </div>
   </div>
-    
+  
+<!-- この辺で空ページを作っておく｡ -->
+  <div class="app-page" data-page="synthesis"></div>
+  <div class="app-page" data-page="recognition"></div>
+  <div class="app-page" data-page="draw"></div>
+  <div class="app-page" data-page="use"></div>
+  <div class="app-page" data-page="contact"></div>
+
   
   <script src="zepto.js"></script>
   <script src="app.min.js"></script>
     
   <script>
-    App.controller('home', function (page) {
-    // put stuff here
-    });
-    App.controller('page2', function (page) {
-    // put stuff here
-    });
     try {
       App.restore();
     } catch (err) {
       App.load('home');
     }
+
+    /* この辺でクリックされた時にページを遷移するように処理を書いておく｡ */
+    App.controller('synthesis', function (page) {
+      window.location = './synthesis.html';
+    });
+    App.controller('recognition', function (page) {
+      window.location = './recognition.html';
+    });
+    App.controller('draw', function (page) {
+      window.location = './draw.html';
+    });
+    App.controller('use', function (page) {
+      window.location = './use.html';
+    });
+    App.controller('contact', function (page) {
+      window.location = './contact.html';
+    });
   </script>
 
   <script src="draw.js"></script>
